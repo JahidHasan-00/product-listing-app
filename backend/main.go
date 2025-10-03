@@ -1,15 +1,15 @@
 package main
 
 import (
-	"crypto/hmac"
-	"crypto/sha256"
-	"fmt"
+	"ecommerce/cmd"
 )
 
 // "ecommerce/cmd"
 
 func main() {
-	// cmd.Serve()
+
+	cmd.Serve()
+
 	// var s string = "Hello World"
 
 	// byteArr := []byte(s)
@@ -40,13 +40,28 @@ func main() {
 	// sha := sha256.Sum256(data)
 	// fmt.Println(sha)
 
-	secrete := []byte("Secrete-Key")
-	message := []byte("Hello World")
+	// secrete := []byte("Secrete-Key")
+	// message := []byte("Hello World")
 
-	h := hmac.New(sha256.New, secrete)
-	// fmt.Println(h)
+	// h := hmac.New(sha256.New, secrete)
+	// // fmt.Println(h)
 
-	text := h.Sum(message)
-	fmt.Println(text)
+	// text := h.Sum(message)
+	// fmt.Println(text)
+
+	// jwt, err := util.CreateJwt("my-secrete", util.Payload{
+	// 	Sub:         45,
+	// 	FirstName:   "Habibur",
+	// 	LastName:    "Rahaman",
+	// 	Email:       "habibur@gmail.com",
+	// 	IsShopOwner: false,
+	// })
+
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
+
+	// fmt.Println(jwt)
 
 }

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"ecommerce/config"
 	"ecommerce/database"
 	"ecommerce/util"
 	"encoding/json"
@@ -32,5 +33,18 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	util.SendData(w, user, http.StatusCreated)
+	cnf := config.GetConfig()
+
+	accessToken, err := util.CreateJwt(cnf.JwtSecreteKey, util.Payload{ //JWT SecreteKey is called aceessToken
+		Sub:       user.ID,
+		FirstName: user.FirstName,
+		LastName:  user.LastName,
+		Email:     user.Email,
+	})
+
+	if err != nil {
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
+
+	util.SendData(w, accessToken, http.StatusCreated)
 }
