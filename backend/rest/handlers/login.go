@@ -36,10 +36,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	cnf := config.GetConfig()
 
 	accessToken, err := util.CreateJwt(cnf.JwtSecreteKey, util.Payload{ //JWT SecreteKey is called aceessToken
-		Sub:       user.ID,
-		FirstName: user.FirstName,
-		LastName:  user.LastName,
-		Email:     user.Email,
+		Sub:         user.ID,
+		FirstName:   user.FirstName,
+		LastName:    user.LastName,
+		Email:       user.Email,
+		IsShopOwner: user.IsShopOwner,
 	})
 
 	if err != nil {
